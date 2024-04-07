@@ -8,7 +8,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 </script>
 <template>
-  <!-- <div class="m-16"> -->
   <div class="container">
     <div class="frame">
       <div class="mat">
@@ -18,13 +17,12 @@ const props = withDefaults(defineProps<Props>(), {
       </div>
     </div>
   </div>
-
-  <!-- </div> -->
 </template>
 
 <style scoped>
 .frame {
   aspect-ratio: 4 / 3;
+  /* aspect-ratio: 0.78; */
   position: relative;
   width: 100%;
   background: black;

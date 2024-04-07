@@ -16,9 +16,12 @@ const props = defineProps<Props>();
 </script>
 <template>
   <section
-    class="flex flex-col justify-center items-center gap-8 w-full h-lvh snap-start"
+    class="flex flex-col justify-center items-center gap-8  h-lvh min-w-full snap-start"
   >
-    <PictureFrame :src="props.exhibitData.src" />
+    <div class="min-w-[75%]">
+
+      <PictureFrame :src="props.exhibitData.src" />
+    </div>
     <ArtLabel
       :artist="props.exhibitData.artist"
       :artist-birth-year="props.exhibitData.artistBirthYear"

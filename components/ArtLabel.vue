@@ -19,18 +19,18 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 <template>
   <div
-    class="border-2 border-gray-950 p-4 font-sans min-w-[250px] max-w-[275px] shadow-xl my-shadow"
+    class="border-2 border-gray-950 p-4 font-sans min-w-[250px] max-w-[375px] shadow-xl my-shadow"
   >
-    <p class="text-xl mb-1">
+    <p class="text-lg mb-1">
       <span class="font-bold">{{ props.artist }}</span>
       <span v-if="props.artistBirthYear"> (b. {{ props.artistBirthYear }})</span>
     </p>
-    <p class="text-xl mb-1">
+    <p class="text-lg mb-1">
       <span class="font-bold italic">{{ props.title }}</span
       ><span v-if="props.year">, </span>
       <span v-if="props.year">{{ props.year }}</span>
     </p>
-    <p v-if="props.medium" class="text-md mb-2">{{ props.medium }}</p>
-    <p v-if="props.details" class="text-sm">{{ props.details }}</p>
+    <p v-if="props.medium" class="text-sm mb-2">{{ props.medium }}</p>
+    <p v-if="props.details" class="text-xs">{{ props.details }}</p>
   </div>
 </template>
