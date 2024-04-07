@@ -6,11 +6,11 @@ definePageMeta({
 <template>
   <main class="relative w-full h-lvh scroll-smooth overflow-auto snap-y snap-mandatory 
   ">
-    <section class="flex flex-col justify-center items-center gap-8 m-8 w-full h-lvh snap-start">
+    <section class="flex flex-col justify-center items-center gap-8 w-full h-lvh snap-start">
       <PictureFrame />
       <ArtLabel />
     </section>
-    <section class="flex flex-col justify-center items-center gap-8 m-8 w-full h-lvh snap-start">
+    <section class="flex flex-col justify-center items-center gap-8  w-full h-lvh snap-start">
       <PictureFrame />
       <ArtLabel />
     </section>

@@ -1,10 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+export interface Props {
+  imageFile: string;
+}
+
+const getImage = (imgFile: string) => {
+  const url = new URL(`../assets/artwork/${imgFile}`, import.meta.url).href;
+  console.log(url);
+  return url;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  imageFile: "rebellion.png",
+});
+
+</script>
 <template>
   <div class="m-16">
     <div class="frame">
       <div class="mat">
         <div class="art">
-          <img src="~/assets/artwork/rebellion.png" alt="Rebellion" />
+          <img :src="getImage(props.imageFile)" alt="Rebellion" />
         </div>
       </div>
     </div>
@@ -14,6 +29,7 @@
 <style scoped>
 .frame {
   min-width: 300px;
+  max-width: 450px;
   position: relative;
   width: 100%;
   padding-bottom: 82.5%;
