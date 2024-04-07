@@ -7,10 +7,13 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "storybook": "storybook dev --port 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@nuxt/image": "^1.5.0",
+    "@vueuse/sound": "^2.0.1",
     "daisyui": "^4.10.1",
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
@@ -19,6 +22,17 @@
   "devDependencies": {
     "@nuxtjs/color-mode": "^3.3.3",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@nuxtjs/tailwindcss": "^6.11.4"
+    "@nuxtjs/storybook": "7.0.2",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "storybook": "8.0.3",
+    "@types/node": "^18.17.5",
+    "@storybook/vue3": "8.0.3",
+    "@storybook-vue/nuxt": "0.2.6",
+    "@storybook/addon-links": "8.0.3",
+    "@storybook/builder-vite": "8.0.3",
+    "@storybook/addon-essentials": "8.0.3",
+    "@storybook/addon-interactions": "8.0.3",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/blocks": "8.0.3"
   }
 }

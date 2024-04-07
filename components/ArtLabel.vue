@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <p class="text-xl mb-1">
       <span class="font-bold">{{ props.artist }}</span>
-      <span v-if="props.artistBirthYear">{{ props.artistBirthYear }}</span>
+      <span v-if="props.artistBirthYear"> (b. {{ props.artistBirthYear }})</span>
     </p>
     <p class="text-xl mb-1">
       <span class="font-bold italic">{{ props.title }}</span

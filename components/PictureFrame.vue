@@ -1,17 +1,20 @@
 <script setup lang="ts">
 export interface Props {
-  imageFile: string;
+  src: string;
 }
 
-const getImage = (imgFile: string) => {
-  const url = new URL(`../assets/artwork/${imgFile}`, import.meta.url).href;
-  console.log(url);
-  return url;
-}
+// const getImage = (imgFile: string) => {
+//   // const url = new URL(`../assets/artwork/${imgFile}`, import.meta.url).href;
+//     const url = new URL(`${imgFile}`, import.meta.url).href;
+//   console.log(url);
+//   return url;
+// }
 
 const props = withDefaults(defineProps<Props>(), {
-  imageFile: "rebellion.png",
+  src: "https://placehold.co/600x400",
 });
+
+// const props = defineProps<Props>();
 
 </script>
 <template>
@@ -19,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
     <div class="frame">
       <div class="mat">
         <div class="art">
-          <img :src="getImage(props.imageFile)" alt="Rebellion" />
+          <img :src="props.src" alt="Rebellion" />
         </div>
       </div>
     </div>
