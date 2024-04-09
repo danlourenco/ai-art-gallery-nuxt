@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 <template>
   <div
-    class="border-2 border-gray-950 p-4 font-sans min-w-[250px] max-w-[375px] shadow-xl my-shadow"
+    class="p-4 font-sans shadow-xl my-shadow bg-white"
   >
     <p class="text-lg mb-1">
       <span class="font-bold">{{ props.artist }}</span>

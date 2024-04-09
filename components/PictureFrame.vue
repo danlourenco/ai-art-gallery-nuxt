@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 </script>
 <template>
-  <div class="container">
+  <!-- <div class="container"> -->
     <div class="frame">
       <div class="mat">
         <div class="art overflow-hidden">
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <style scoped>

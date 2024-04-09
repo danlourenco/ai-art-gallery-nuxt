@@ -16,20 +16,27 @@ const props = defineProps<Props>();
 </script>
 <template>
   <section
-    class="flex flex-col justify-center items-center gap-8  h-lvh min-w-full snap-start"
+    class="flex flex-col lg:flex-row justify-center items-center lg:items-start lg:justify-center gap-8 min-w-full snap-start overflow-y-hidden lg:px-32"
   >
-    <div class="min-w-[75%]">
-
+    <!-- Frame Container-->
+    <div class="min-w-fit w-[70%] lg:w-1/2 lg:order-2">
       <PictureFrame :src="props.exhibitData.src" />
     </div>
-    <ArtLabel
-      :artist="props.exhibitData.artist"
-      :artist-birth-year="props.exhibitData.artistBirthYear"
-      :medium="props.exhibitData.medium"
-      :title="props.exhibitData.title"
-      :year="props.exhibitData.year"
-      :details="props.exhibitData.details"
-
-    />
+    <div class="lg:order-1 lg:w-1/2">
+      <div>
+        <h2 class="font-serif text-2xl text-gray-800">Artist Statement</h2>
+        <p></p>
+      </div>
+      
+      
+      <!-- <ArtLabel
+        :artist="props.exhibitData.artist"
+        :artist-birth-year="props.exhibitData.artistBirthYear"
+        :medium="props.exhibitData.medium"
+        :title="props.exhibitData.title"
+        :year="props.exhibitData.year"
+        :details="props.exhibitData.details"
+      /> -->
+    </div>
   </section>
 </template>
