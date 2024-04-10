@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
     "@vueuse/sound/nuxt",
-    "@nuxtjs/storybook",
     "@formkit/nuxt",
   ],
   formkit: {
