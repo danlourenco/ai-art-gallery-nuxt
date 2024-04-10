@@ -4,6 +4,7 @@ import { setErrors } from '@formkit/vue'
 const complete = ref(false)
 
 const submitHandler = async (data) => {
+  console.log(data);
   // We need to submit this as a multipart/form-data
   // to do this we use the FormData API.
   const body = new FormData()
@@ -15,7 +16,7 @@ const submitHandler = async (data) => {
   })
 
   // We'll perform a real upload to httpbin.org
-  const res = await fetch('https://httpbin.org/post', {
+  const res = await fetch('http://localhost:3000/api/upload', {
     method: 'POST',
     body: body,
   })
