@@ -8,7 +8,12 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@vueuse/sound/nuxt",
     "@nuxtjs/storybook",
+    "@formkit/nuxt",
   ],
+  formkit: {
+    // Experimental support for auto loading (see note):
+    autoImport: true
+  },
   googleFonts: {
     families: {
       "EB Garamond": [400, 500, 600, 700],
