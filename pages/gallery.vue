@@ -33,8 +33,6 @@ const items = [
 ];
 </script>
 <template>
-
-
   <div class="grid grid-cols-12 grid-rows-8 auto-rows-auto gap-4 h-lvh">
     <div class="col-span-12">
       <div class="navbar bg-base-100">
@@ -43,16 +41,17 @@ const items = [
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
-                  <li><a>Link</a></li>
-
+            <li><NuxtLink to="/upload">Upload</NuxtLink></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="col-span-12 row-span-8 row-start-2 scroll-smooth overflow-x-scroll snap-x snap-mandatory flex">
+    <div
+      class="col-span-12 row-span-8 row-start-2 scroll-smooth overflow-x-scroll snap-x snap-mandatory flex"
+    >
       <template v-for="item in items" :key="item.id">
-      <ArtExhibit :exhibitData="item" />
-    </template>
+        <ArtExhibit :exhibitData="item" />
+      </template>
     </div>
   </div>
 </template>
