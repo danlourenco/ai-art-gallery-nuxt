@@ -13,8 +13,10 @@
     "@formkit/nuxt": "^1.6.2",
     "@nuxt/image": "^1.5.0",
     "@vueuse/sound": "^2.0.1",
+    "ai": "^3.0.23",
     "daisyui": "^4.10.1",
     "nuxt": "^3.11.2",
+    "openai": "^4.36.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },

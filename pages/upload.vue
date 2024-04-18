@@ -1,44 +1,71 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { setErrors } from "@formkit/vue";
-const complete = ref(false);
+import { useChat } from "ai/vue";
 
-interface FileItem {
-  name: "string";
-  file: File;
-}
+const { messages, input, handleSubmit } = useChat({
+  api: "/api/generate",
+});
+
 const runtimeConfig = useRuntimeConfig();
+const complete = ref(false);
 const selectedImage = ref(null);
-const artistStatement = ref("");
+const selectedImageDataUrl = ref("");
+const statement = ref("Testing");
+const audioSrc = ref("");
 
-const onFileChange = (e) => {
+const onFileChange = async (e) => {
   const file = e.target.files[0];
   selectedImage.value = file;
+  selectedImageDataUrl.value = await toBase64(file);
 };
 
 const imageUrl = computed(() => {
   return selectedImage.value ? URL.createObjectURL(selectedImage.value) : null;
 });
 
-const submitHandler = async (data) => {
-  const body = new FormData();
-  data.image.forEach((fileItem: FileItem) => {
-    body.append("image", fileItem.file);
+const generateAudio = async () => {
+  console.log("generate audio!");
+  const res = await $fetch("/api/audio", {
+    method: "POST",
+    body: {
+      text: statement.value,
+    },
   });
+  console.log(res);
+  audioSrc.value = URL.createObjectURL(res);
+};
+
+const submitHandler = async (data) => {
+  const formData = new FormData();
+  formData.append("image", data.image[0].file);
 
   const res = await $fetch("/api/images/upload", {
     method: "PUT",
-    body,
+    body: formData,
     baseURL: runtimeConfig.public.CLOUDFLARE_WORKER_URL,
   })
     .then((res) => {
       console.log(res);
-      complete.value = true;
     })
     .catch((e) => {
       console.error(e);
       setErrors("imageForm", ["The server didn’t like our request."]);
     });
+};
+
+const generateArtistStatement = (e: Event) => {
+  console.log(e);
+  statement.value = "This is a test artist statement.";
+  console.log(imageUrl.value as string);
+  $fetch("/api/generate", {
+    method: "POST",
+    body: JSON.stringify({
+      image: selectedImageDataUrl.value,
+    }),
+  }).then((res) => {
+    statement.value = res.response.choices[0].message.content;
+  });
 };
 </script>
 
@@ -56,16 +83,28 @@ const submitHandler = async (data) => {
           type="file"
           name="image"
           @change="onFileChange"
-          label="Upload Images"
+          label="Upload Image"
           accept=".png,.jpg,.jpeg"
           help="Please upload a PNG or JPEG image."
         />
         <FormKit
+          v-model="statement"
           type="textarea"
           name="artist-statement"
           label="Artist Statement"
           placeholder="Enter your artist statement here"
         />
+        <button
+          type="button"
+          class="btn btn-secondary"
+          @click="generateArtistStatement"
+        >
+          Generate Artist Statement
+        </button>
+        <button type="button" class="btn btn-secondary" @click="generateAudio">
+          Generate Audio
+        </button>
+        <audio ref="audioEl" controls :src="audioSrc"></audio>
       </FormKit>
       <div v-else>Uploaded!</div>
     </section>
@@ -73,6 +112,7 @@ const submitHandler = async (data) => {
       <h1>Preview</h1>
       <div>
         <img :src="imageUrl" v-if="imageUrl" />
+        <p class="whitespace-pre-line">{{ statement }}</p>
       </div>
     </section>
   </main>

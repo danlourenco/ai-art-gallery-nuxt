@@ -1,6 +1,8 @@
-const getImage = (imgFile: string) => {
-  // const url = new URL(`../assets/artwork/${imgFile}`, import.meta.url).href;
-  const url = new URL(`${imgFile}`, import.meta.url).href;
-  console.log(url);
-  return url;
+export const toBase64 = (file: File) => {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
 };

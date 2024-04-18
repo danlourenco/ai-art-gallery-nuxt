@@ -14,6 +14,8 @@ export default defineNuxtConfig({
     autoImport: true,
   },
   runtimeConfig: {
+    openaiApiKey: "",
+    elevenLabsKey: "",
     public: {
       CLOUDFLARE_WORKER_URL: "",
     },
